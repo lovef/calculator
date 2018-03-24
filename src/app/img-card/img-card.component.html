@@ -1,6 +1,8 @@
 <mat-card>
-  <img
-    src="https://cataas.com/cat/says/Progressive%20Web%20Cat"
-    alt="Cute cat"
-    mat-card-image>
+  <img src="{{ src }}" alt="Cute cat" mat-card-image>
+  <mat-card-actions>
+    <button color="{{ button.color }}" (click)="generateSrc()" mat-button mat-raised-button>
+      {{ button.text }}
+    </button>
+  </mat-card-actions>
 </mat-card>
