@@ -1,0 +1,21 @@
+{
+  "name": "Loves Calculator",
+  "short_name": "Calculator",
+  "description": "An experimental PWA calculator",
+  "start_url": "index.html",
+  "display": "standalone",
+  "theme_color": "#673ab7",
+  "background_color": "#000",
+  "icons": [
+    {
+      "src": "assets/rainbow-center-round-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/rainbow-center-round-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
