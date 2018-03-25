@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { MatToolbarModule, MatCardModule, MatButtonModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { ImgCardComponent } from './img-card/img-card.component';
+import { CalculatorComponent } from './calculator/calculator.component';
 
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
@@ -12,7 +12,7 @@ import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
-    ImgCardComponent
+    CalculatorComponent
   ],
   imports: [
     BrowserModule,
