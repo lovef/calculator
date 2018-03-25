@@ -9,7 +9,13 @@ export class CalculatorComponent implements OnInit {
 
   constructor() { }
 
+  public calculator: Calculator = new Calculator();
+
   ngOnInit() {
   }
 
+}
+
+class Calculator {
+  output: string = '0'
 }
