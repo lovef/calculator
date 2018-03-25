@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-calculator',
@@ -14,8 +14,16 @@ export class CalculatorComponent implements OnInit {
   ngOnInit() {
   }
 
+  @HostListener('document:keypress', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    this.calculator.onKeyPress(event);
+  }
 }
 
 class Calculator {
   output: string = '0'
+
+  onKeyPress = function(event: KeyboardEvent) {
+    this.output = event.key
+  }
 }
