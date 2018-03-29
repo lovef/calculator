@@ -8,6 +8,7 @@ import { CalculatorComponent } from './calculator/calculator.component';
 
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { CalculatorService } from './calculator/calculator.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { environment } from '../environments/environment';
     MatButtonModule,
     environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : []
   ],
-  providers: [],
+  providers: [CalculatorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

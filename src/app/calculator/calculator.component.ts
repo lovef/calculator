@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, HostListener } from '@angular/core';
+import { CalculatorService } from './calculator.service';
 
 @Component({
   selector: 'app-calculator',
@@ -7,23 +8,13 @@ import { Component, OnInit, Output, HostListener } from '@angular/core';
 })
 export class CalculatorComponent implements OnInit {
 
-  constructor() { }
-
-  public calculator: Calculator = new Calculator();
+  constructor(public calculator: CalculatorService) { }
 
   ngOnInit() {
   }
 
   @HostListener('document:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
-    this.calculator.onKeyPress(event);
-  }
-}
-
-class Calculator {
-  output: string = '0'
-
-  onKeyPress = function(event: KeyboardEvent) {
-    this.output = event.key
+    this.calculator.press(event.key);
   }
 }
