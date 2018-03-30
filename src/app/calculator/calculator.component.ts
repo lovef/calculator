@@ -25,7 +25,10 @@ export class CalculatorComponent implements OnInit {
   handleKeyboardEvent(event: KeyboardEvent) {
     console.log(event)
     switch (event.keyCode) {
-      case 8: this.calculator.backspace(); break
+      case 8:
+        this.calculator.backspace()
+        event.preventDefault()
+        break
       default:
         this.calculator.input(event.key)
         break
