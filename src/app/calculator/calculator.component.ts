@@ -8,7 +8,15 @@ import { CalculatorService } from './calculator.service';
 })
 export class CalculatorComponent implements OnInit {
 
-  constructor(public calculator: CalculatorService) { }
+  get expression(): string {
+    return this.calculator.expression.toString()
+  }
+
+  get result(): string {
+    return this.calculator.result.toString()
+  }
+
+  constructor(private calculator: CalculatorService) { }
 
   ngOnInit() {
   }
