@@ -21,8 +21,14 @@ export class CalculatorComponent implements OnInit {
   ngOnInit() {
   }
 
-  @HostListener('document:keypress', ['$event'])
+  @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
-    this.calculator.press(event.key);
+    console.log(event)
+    switch (event.keyCode) {
+      case 8: this.calculator.backspace(); break
+      default:
+        this.calculator.input(event.key)
+        break
+    }
   }
 }

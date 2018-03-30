@@ -20,18 +20,18 @@ describe('CalculatorService', () => {
 
   it('pressing 1+1 gives the expression 1 + 1',
     inject([CalculatorService], (service: CalculatorService) => {
-      service.press('1')
-      service.press('+')
-      service.press('1')
+      service.input('1')
+      service.input('+')
+      service.input('1')
       expect(service.expression.toString()).toBe('1 + 1')
     })
   );
 
   it('1 + 1 = 2',
     inject([CalculatorService], (service: CalculatorService) => {
-      service.press('1')
-      service.press('+')
-      service.press('1')
+      service.input('1')
+      service.input('+')
+      service.input('1')
       expect(service.result).toBe(2);
     })
   );

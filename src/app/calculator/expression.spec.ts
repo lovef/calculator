@@ -45,4 +45,23 @@ describe('Expression', () => {
     expression.push('5')
     expect(expression.result).toBe(0.5)
   })
+
+  it('press backspace to erase input', () => {
+    var expression = new Expression()
+    expression.push('1,2')
+    expression.push('+')
+    expression.push('3')
+    expect(expression.toString()).toBe('1,2 + 3')
+    expression.backspace()
+    expect(expression.toString()).toBe('1,2 +')
+    expression.backspace()
+    expect(expression.toString()).toBe('1,2')
+    expression.backspace()
+    expect(expression.toString()).toBe('1,')
+    expression.backspace()
+    expect(expression.toString()).toBe('1')
+    expression.backspace()
+    expect(expression.toString()).toBe('')
+    expression.backspace()
+  })
 });

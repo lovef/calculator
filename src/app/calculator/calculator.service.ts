@@ -12,7 +12,11 @@ export class CalculatorService {
 
   constructor() { }
 
-  public press(input: string) {
+  public input(input: string) {
     this.expression.push(input)
+  }
+
+  public backspace() {
+    this.expression.backspace()
   }
 }

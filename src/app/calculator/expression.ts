@@ -27,6 +27,18 @@ export class Expression {
     }
   }
 
+  backspace() {
+    let last = this.last
+    if (this.isValue(last)) {
+      last.backspace()
+      if (last.empty) {
+        this.parts.splice(-1, 1)
+      }
+    } else {
+      this.parts.splice(-1, 1)
+    }
+  }
+
   private calculate(): Value {
     var result = 0
     const parts = this.parts.map(item => item)
@@ -71,6 +83,9 @@ class Value {
   static zero: Value = new Value()
   public value: number = 0
   private input: string = '0'
+  get empty() {
+    return this.input.length === 0
+  }
 
   static fromInput(input: string) {
     let value = new Value()
@@ -88,6 +103,11 @@ class Value {
 
   push(something: string) {
     this.input += something
+    this.value = Value.parse(this.input)
+  }
+
+  backspace() {
+    this.input = this.input.slice(0, -1)
     this.value = Value.parse(this.input)
   }
 
