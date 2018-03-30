@@ -1,6 +1,12 @@
 # Calculator
 
+[Calculator app](https://lovef-calculator.firebaseapp.com) in the making.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
+
+## Deploy to Firebase
+
+Run `npm run deploy` to build and deploy.
 
 ## Development server
 
