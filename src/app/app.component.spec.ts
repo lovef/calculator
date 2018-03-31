@@ -1,8 +1,9 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { CalculatorComponent } from './calculator/calculator.component';
-import { MatToolbarModule, MatCardModule, MatButtonModule } from '@angular/material';
+import { MatToolbarModule, MatCardModule, MatButtonModule, MatIconModule } from '@angular/material';
 import { CalculatorService } from './calculator/calculator.service';
+import { KeypadComponent } from './calculator/keypad/keypad.component';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -10,10 +11,12 @@ describe('AppComponent', () => {
         MatToolbarModule,
         MatCardModule,
         MatButtonModule,
+        MatIconModule
       ],
       declarations: [
         AppComponent,
-        CalculatorComponent
+        CalculatorComponent,
+        KeypadComponent
       ],
       providers: [
         CalculatorService
