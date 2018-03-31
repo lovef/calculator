@@ -38,6 +38,18 @@ describe('Expression', () => {
     expect(expression.result).toBe(1);
   })
 
+  it('2 * 3 = 6', () => {
+    var expression = new Expression()
+    expression.push('2 * 3')
+    expect(expression.result).toBe(6);
+  })
+
+  it('6 / 3 = 2', () => {
+    var expression = new Expression()
+    expression.push('6 / 3')
+    expect(expression.result).toBe(2);
+  })
+
   it('press backspace to erase input', () => {
     var expression = new Expression()
     expression.push('1,2 + 3')
