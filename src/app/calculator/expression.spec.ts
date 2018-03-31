@@ -22,16 +22,16 @@ describe('Expression', () => {
 
   it('entering multiple operators replaces the last operator', () => {
     let expression = new Expression()
-    expression.push('1*')
-    expect(expression.toString()).toBe('1 *')
+    expression.push('1-')
+    expect(expression.toString()).toBe('1 -')
     expression.push('+')
     expect(expression.toString()).toBe('1 +')
   })
 
-  it('1+1 gives the expression string "1 + 1"', () => {
+  it('1+1*2 gives the expression string "1 + 1 · 2"', () => {
     let expression = new Expression()
-    expression.push('1+1')
-    expect(expression.toString()).toBe('1 + 1')
+    expression.push('1+1*2')
+    expect(expression.toString()).toBe('1 + 1 · 2')
   })
 
   it('1 + 1 = 2', () => {
@@ -49,6 +49,12 @@ describe('Expression', () => {
   it('2 * 3 = 6', () => {
     let expression = new Expression()
     expression.push('2 * 3')
+    expect(expression.result).toBe(6);
+  })
+
+  it('2 · 3 = 6', () => {
+    let expression = new Expression()
+    expression.push('2 · 3')
     expect(expression.result).toBe(6);
   })
 
