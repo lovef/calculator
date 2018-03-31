@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/lovef/calculator.svg?branch=master)](https://travis-ci.org/lovef/calculator)
+
 # Calculator
 
 [Calculator app](https://lovef-calculator.firebaseapp.com) in the making.
