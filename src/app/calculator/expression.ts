@@ -13,15 +13,24 @@ export class Expression {
   }
 
   push(input: string) {
-    switch (input) {
+    for (var i = 0; i < input.length; i++) {
+      this.pushChar(input.charAt(i))
+    }
+  }
+
+  private pushChar(char: string) {
+    switch (char) {
       case '+': this.parts.push(Plus.instance); break
       case '-': this.parts.push(Minus.instance); break
       default:
         let last = this.last
         if (this.isValue(last)) {
-          last.push(input)
+          last.push(char)
         } else {
-          this.parts.push(Value.fromInput(input))
+          let value = Value.fromInput(char)
+          if (value) {
+            this.parts.push(Value.fromInput(char))
+          }
         }
         break
     }
@@ -87,14 +96,16 @@ class Value {
     return this.input.length === 0
   }
 
-  static fromInput(input: string) {
-    let value = new Value()
-    value.input = input
-    value.value = Value.parse(input)
-    return value
+  static fromInput(input: string): Value {
+    if (this.validate(input)) {
+      let value = new Value()
+      value.input = input
+      value.value = Value.parse(input)
+      return value
+    }
   }
 
-  static from(number: number) {
+  static from(number: number): Value {
     let value = new Value()
     value.value = number
     value.input = number.toString()
@@ -102,13 +113,19 @@ class Value {
   }
 
   push(something: string) {
-    this.input += something
-    this.value = Value.parse(this.input)
+    if (something.length === 1 && /[\d.,]/.test(something)) {
+      this.input += something
+      this.value = Value.parse(this.input)
+    }
   }
 
   backspace() {
     this.input = this.input.slice(0, -1)
     this.value = Value.parse(this.input)
+  }
+
+  static validate(input: string) {
+    return /^[\d.,]+$/.test(input)
   }
 
   static parse(input: string): number {
