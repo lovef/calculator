@@ -1,12 +1,13 @@
 import { Component, OnInit, Output, HostListener } from '@angular/core';
 import { CalculatorService } from './calculator.service';
+import { InputHandler } from './keypad/keypad.component';
 
 @Component({
   selector: 'app-calculator',
   templateUrl: './calculator.component.html',
   styleUrls: ['./calculator.component.css']
 })
-export class CalculatorComponent implements OnInit {
+export class CalculatorComponent implements InputHandler {
 
   get expression(): string {
     return this.calculator.expression.toString()
@@ -18,12 +19,16 @@ export class CalculatorComponent implements OnInit {
 
   constructor(private calculator: CalculatorService) { }
 
-  ngOnInit() {
+  onInput(input: string) {
+    this.calculator.input(input)
+  }
+
+  onBackspace() {
+    this.calculator.backspace()
   }
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
-    console.log(event)
     switch (event.keyCode) {
       case 8:
         this.calculator.backspace()
