@@ -41,7 +41,8 @@ export class Expression {
     switch (char) {
       case '+': return Plus.instance
       case '-': return Minus.instance
-      case '*': return Times.instance
+      case '*':
+      case '·': return Times.instance
       case '/': return Divide.instance
     }
   }
@@ -188,7 +189,7 @@ class Times implements BinaryOperator {
   static instance = new Times()
 
   priority = 2
-  operator = '*'
+  operator = '·'
 
   calculate(a: Value, b: Value): Value {
     return Value.from(a.value * b.value)
