@@ -22,6 +22,8 @@ export class Expression {
     switch (char) {
       case '+': this.parts.push(Plus.instance); break
       case '-': this.parts.push(Minus.instance); break
+      case '*': this.parts.push(Times.instance); break
+      case '/': this.parts.push(Divide.instance); break
       default:
         let last = this.last
         if (this.isValue(last)) {
@@ -49,7 +51,6 @@ export class Expression {
   }
 
   private calculate(): Value {
-    var result = 0
     const parts = this.parts.map(item => item)
 
     while (this.reduce(parts));
@@ -138,13 +139,16 @@ class Value {
 }
 
 interface BinaryOperator {
+  priority: number
   operator: string
   calculate(a: Value, b: Value): Value
 }
 
 class Plus implements BinaryOperator {
-  operator = '+'
   static instance = new Plus()
+
+  priority = 1
+  operator = '+'
 
   calculate(a: Value, b: Value): Value {
     return Value.from(a.value + b.value)
@@ -156,11 +160,43 @@ class Plus implements BinaryOperator {
 }
 
 class Minus implements BinaryOperator {
-  operator = '-'
   static instance = new Minus()
+
+  priority = 1
+  operator = '-'
 
   calculate(a: Value, b: Value): Value {
     return Value.from(a.value - b.value)
+  }
+
+  public toString(): string {
+    return this.operator
+  }
+}
+
+class Times implements BinaryOperator {
+  static instance = new Times()
+
+  priority = 2
+  operator = '*'
+
+  calculate(a: Value, b: Value): Value {
+    return Value.from(a.value * b.value)
+  }
+
+  public toString(): string {
+    return this.operator
+  }
+}
+
+class Divide implements BinaryOperator {
+  static instance = new Divide()
+
+  priority = 3
+  operator = '/'
+
+  calculate(a: Value, b: Value): Value {
+    return Value.from(a.value / b.value)
   }
 
   public toString(): string {
