@@ -59,7 +59,9 @@ export class Expression {
   }
 
   private reduce(parts: Part[]): boolean {
-    let i = parts.findIndex(part => this.isOperator(part))
+    let priorities = parts.map(part => this.isOperator(part) ? part.priority : Number.MIN_SAFE_INTEGER)
+    let maxPriority = Math.max(...priorities)
+    let i = parts.findIndex(part => this.isOperator(part) && part.priority === maxPriority)
     let operator = parts[i]
     let a = parts[i - 1]
     let b = parts[i + 1]

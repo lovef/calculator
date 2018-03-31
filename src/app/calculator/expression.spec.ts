@@ -50,6 +50,12 @@ describe('Expression', () => {
     expect(expression.result).toBe(2);
   })
 
+  it('1 + 2 * 3 = 7', () => {
+    var expression = new Expression()
+    expression.push('1 + 2 * 3')
+    expect(expression.result).toBe(7);
+  })
+
   it('press backspace to erase input', () => {
     var expression = new Expression()
     expression.push('1,2 + 3')
