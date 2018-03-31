@@ -19,22 +19,30 @@ export class Expression {
   }
 
   private pushChar(char: string) {
-    switch (char) {
-      case '+': this.parts.push(Plus.instance); break
-      case '-': this.parts.push(Minus.instance); break
-      case '*': this.parts.push(Times.instance); break
-      case '/': this.parts.push(Divide.instance); break
-      default:
-        let last = this.last
-        if (this.isValue(last)) {
-          last.push(char)
-        } else {
-          let value = Value.fromInput(char)
-          if (value) {
-            this.parts.push(Value.fromInput(char))
-          }
+    let operator = this.operatorFrom(char)
+    if (operator && this.isOperator(this.last)) {
+      this.parts.splice(-1, 1, operator)
+    } else if (operator) {
+      this.parts.push(operator)
+    } else {
+      let last = this.last
+      if (this.isValue(last)) {
+        last.push(char)
+      } else {
+        let value = Value.fromInput(char)
+        if (value) {
+          this.parts.push(Value.fromInput(char))
         }
-        break
+      }
+    }
+  }
+
+  private operatorFrom(char: string): BinaryOperator {
+    switch (char) {
+      case '+': return Plus.instance
+      case '-': return Minus.instance
+      case '*': return Times.instance
+      case '/': return Divide.instance
     }
   }
 
