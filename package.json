@@ -7,7 +7,7 @@
     "start": "ng serve",
     "build": "ng build --prod",
     "deploy": "npm run test && npm run build && firebase deploy",
-    "test": "ng test --browser PhantomJS --single-run",
+    "test": "ng test --browser PhantomJS --single-run && ng lint",
     "lint": "ng lint",
     "lint:watch": "chokidar webpack.config.* src/**/*.ts buildScripts/**/*.ts -c \"npm run lint\" --initial --verbose",
     "e2e": "ng e2e"
