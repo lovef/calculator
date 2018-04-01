@@ -1,3 +1,6 @@
+import { Value } from './value'
+import { BinaryOperator, Plus, Minus, Times, Divide } from './binaryOperator'
+
 type Part = BinaryOperator | Value
 
 export class Expression {
@@ -13,23 +16,23 @@ export class Expression {
   }
 
   push(input: string) {
-    for (var i = 0; i < input.length; i++) {
+    for (let i = 0; i < input.length; i++) {
       this.pushChar(input.charAt(i))
     }
   }
 
   private pushChar(char: string) {
-    let operator = this.operatorFrom(char)
+    const operator = this.operatorFrom(char)
     if (operator && this.isOperator(this.last)) {
       this.parts.splice(-1, 1, operator)
     } else if (operator) {
       this.parts.push(operator)
     } else {
-      let last = this.last
+      const last = this.last
       if (this.isValue(last)) {
         last.push(char)
       } else {
-        let value = Value.fromInput(char)
+        const value = Value.fromInput(char)
         if (value) {
           this.parts.push(Value.fromInput(char))
         }
@@ -48,7 +51,7 @@ export class Expression {
   }
 
   backspace() {
-    let last = this.last
+    const last = this.last
     if (this.isValue(last)) {
       last.backspace()
       if (last.empty) {
@@ -68,14 +71,14 @@ export class Expression {
   }
 
   private reduce(parts: Part[]): boolean {
-    let priorities = parts.map(part => this.isOperator(part) ? part.priority : Number.MIN_SAFE_INTEGER)
-    let maxPriority = Math.max(...priorities)
-    let i = parts.findIndex(part => this.isOperator(part) && part.priority === maxPriority)
-    let operator = parts[i]
-    let a = parts[i - 1]
-    let b = parts[i + 1]
+    const priorities = parts.map(part => this.isOperator(part) ? part.priority : Number.MIN_SAFE_INTEGER)
+    const maxPriority = Math.max(...priorities)
+    const i = parts.findIndex(part => this.isOperator(part) && part.priority === maxPriority)
+    const operator = parts[i]
+    const a = parts[i - 1]
+    const b = parts[i + 1]
     if (this.isOperator(operator) && this.isValue(a) && this.isValue(b)) {
-      let c = operator.calculate(a, b)
+      const c = operator.calculate(a, b)
       parts.splice(i - 1, 3, c)
       return true
     }
@@ -83,7 +86,7 @@ export class Expression {
   }
 
   isNumber(x: any): x is number {
-    return x && typeof x === "number"
+    return x && typeof x === 'number'
   }
 
   isValue(x: any): x is Value {
@@ -96,121 +99,5 @@ export class Expression {
 
   public toString(): string {
     return this.parts.join(' ')
-  }
-}
-
-class Value {
-
-  static zero: Value = new Value()
-  public value: number = 0
-  private input: string = '0'
-  get empty() {
-    return this.input.length === 0
-  }
-
-  static fromInput(input: string): Value {
-    if (this.validate(input)) {
-      let value = new Value()
-      value.input = input
-      value.value = Value.parse(input)
-      return value
-    }
-  }
-
-  static from(number: number): Value {
-    let value = new Value()
-    value.value = number
-    value.input = number.toString()
-    return value
-  }
-
-  push(something: string) {
-    if (something.length === 1 && /[\d.,]/.test(something)) {
-      this.input += something
-      this.value = Value.parse(this.input)
-    }
-  }
-
-  backspace() {
-    this.input = this.input.slice(0, -1)
-    this.value = Value.parse(this.input)
-  }
-
-  static validate(input: string) {
-    return /^[\d.,]+$/.test(input)
-  }
-
-  static parse(input: string): number {
-    return Number(input.replace(',', '.'))
-  }
-
-  public toString(): string {
-    return this.input
-  }
-}
-
-interface BinaryOperator {
-  priority: number
-  operator: string
-  calculate(a: Value, b: Value): Value
-}
-
-class Plus implements BinaryOperator {
-  static instance = new Plus()
-
-  priority = 1
-  operator = '+'
-
-  calculate(a: Value, b: Value): Value {
-    return Value.from(a.value + b.value)
-  }
-
-  public toString(): string {
-    return this.operator
-  }
-}
-
-class Minus implements BinaryOperator {
-  static instance = new Minus()
-
-  priority = 1
-  operator = '-'
-
-  calculate(a: Value, b: Value): Value {
-    return Value.from(a.value - b.value)
-  }
-
-  public toString(): string {
-    return this.operator
-  }
-}
-
-class Times implements BinaryOperator {
-  static instance = new Times()
-
-  priority = 2
-  operator = '·'
-
-  calculate(a: Value, b: Value): Value {
-    return Value.from(a.value * b.value)
-  }
-
-  public toString(): string {
-    return this.operator
-  }
-}
-
-class Divide implements BinaryOperator {
-  static instance = new Divide()
-
-  priority = 3
-  operator = '/'
-
-  calculate(a: Value, b: Value): Value {
-    return Value.from(a.value / b.value)
-  }
-
-  public toString(): string {
-    return this.operator
   }
 }

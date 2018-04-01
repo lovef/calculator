@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 
 @Component({
-  selector: 'calculator-keypad',
+  selector: 'app-keypad',
   templateUrl: './keypad.component.html',
   styleUrls: ['./keypad.component.css']
 })
