@@ -1,6 +1,6 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { CalculatorComponent } from './calculator/calculator.component';
-import { KeypadComponent } from './calculator/keypad/keypad.component';
+import { Component, ViewChild, OnInit } from '@angular/core'
+import { CalculatorComponent } from './calculator/calculator.component'
+import { KeypadComponent } from './calculator/keypad/keypad.component'
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ import { KeypadComponent } from './calculator/keypad/keypad.component';
 })
 export class AppComponent implements OnInit {
 
-  title = 'Calculator';
+  title = 'Calculator'
 
   @ViewChild(CalculatorComponent)
   private calculatorComponent: CalculatorComponent

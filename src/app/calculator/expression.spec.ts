@@ -1,4 +1,4 @@
-import { Expression } from "./expression";
+import { Expression } from './expression'
 
 describe('Expression', () => {
 
@@ -10,7 +10,7 @@ describe('Expression', () => {
     let expression = new Expression()
     expression.push('1')
     expression.push('2')
-    expect(expression.result).toBe(12);
+    expect(expression.result).toBe(12)
   })
 
   it('pressing ,5 gives 0.5', () => {
@@ -37,37 +37,37 @@ describe('Expression', () => {
   it('1 + 1 = 2', () => {
     let expression = new Expression()
     expression.push('1 + 1')
-    expect(expression.result).toBe(2);
+    expect(expression.result).toBe(2)
   })
 
   it('1 + 1 - 1 = 1', () => {
     let expression = new Expression()
     expression.push('1 + 1 - 1')
-    expect(expression.result).toBe(1);
+    expect(expression.result).toBe(1)
   })
 
   it('2 * 3 = 6', () => {
     let expression = new Expression()
     expression.push('2 * 3')
-    expect(expression.result).toBe(6);
+    expect(expression.result).toBe(6)
   })
 
   it('2 · 3 = 6', () => {
     let expression = new Expression()
     expression.push('2 · 3')
-    expect(expression.result).toBe(6);
+    expect(expression.result).toBe(6)
   })
 
   it('6 / 3 = 2', () => {
     let expression = new Expression()
     expression.push('6 / 3')
-    expect(expression.result).toBe(2);
+    expect(expression.result).toBe(2)
   })
 
   it('1 + 2 * 3 = 7', () => {
     let expression = new Expression()
     expression.push('1 + 2 * 3')
-    expect(expression.result).toBe(7);
+    expect(expression.result).toBe(7)
   })
 
   it('press backspace to erase input', () => {
@@ -86,4 +86,4 @@ describe('Expression', () => {
     expect(expression.toString()).toBe('')
     expression.backspace()
   })
-});
+})

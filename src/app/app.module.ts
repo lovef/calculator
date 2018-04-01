@@ -1,15 +1,15 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser'
+import { NgModule } from '@angular/core'
 
-import { MatToolbarModule, MatCardModule, MatButtonModule, MatIconModule } from '@angular/material';
+import { MatToolbarModule, MatCardModule, MatButtonModule, MatIconModule } from '@angular/material'
 
-import { AppComponent } from './app.component';
-import { CalculatorComponent } from './calculator/calculator.component';
+import { AppComponent } from './app.component'
+import { CalculatorComponent } from './calculator/calculator.component'
 
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
-import { CalculatorService } from './calculator/calculator.service';
-import { KeypadComponent } from './calculator/keypad/keypad.component';
+import { ServiceWorkerModule } from '@angular/service-worker'
+import { environment } from '../environments/environment'
+import { CalculatorService } from './calculator/calculator.service'
+import { KeypadComponent } from './calculator/keypad/keypad.component'
 
 @NgModule({
   declarations: [
