@@ -1,6 +1,6 @@
-import { Component, OnInit, Output, HostListener } from '@angular/core';
-import { CalculatorService } from './calculator.service';
-import { InputHandler } from './keypad/keypad.component';
+import { Component, OnInit, Output, HostListener } from '@angular/core'
+import { CalculatorService } from './calculator.service'
+import { InputHandler } from './keypad/keypad.component'
 
 @Component({
   selector: 'app-calculator',

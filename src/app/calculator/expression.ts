@@ -62,7 +62,7 @@ export class Expression {
   private calculate(): Value {
     const parts = this.parts.map(item => item)
 
-    while (this.reduce(parts));
+    while (this.reduce(parts)) {}
 
     return (parts[0] as Value) || Value.zero
   }
@@ -83,7 +83,7 @@ export class Expression {
   }
 
   isNumber(x: any): x is number {
-    return x && typeof x === "number";
+    return x && typeof x === "number"
   }
 
   isValue(x: any): x is Value {

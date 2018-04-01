@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { BinaryOperator } from '@angular/compiler';
-import { Expression } from './expression';
+import { Injectable } from '@angular/core'
+import { BinaryOperator } from '@angular/compiler'
+import { Expression } from './expression'
 
 @Injectable()
 export class CalculatorService {
