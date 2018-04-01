@@ -5,6 +5,7 @@
 }
 .icon {
   margin-right: 10px;
+  height: 36px;
 }
 .footer {
   grid-row-start: 2;
