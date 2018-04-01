@@ -64,6 +64,12 @@ export class Expression {
 
   private calculate(): Value {
     const parts = this.parts.map(item => item)
+    if(this.isOperator(parts[0])) {
+      parts.splice(0, 1)
+    }
+    if(this.isOperator(this.last)) {
+      parts.splice(-1, 1)
+    }
 
     while (this.reduce(parts)) {}
 
