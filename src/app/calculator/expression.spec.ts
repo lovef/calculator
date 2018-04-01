@@ -76,6 +76,11 @@ describe('Expression', () => {
     expect(expression.result).toBe(3)
   })
 
+  it('leading - negates the first value', () => {
+    expression.push('- 1 + 2')
+    expect(expression.result).toBe(1)
+  })
+
   it('press backspace to erase input', () => {
     expression.push('1,2 + 3')
     expect(expression.toString()).toBe('1,2 + 3')
