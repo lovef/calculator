@@ -1,2 +1,10 @@
-<label id="expression" class='expression'>{{ expression }}</label>
-<label id="output" class='output'>{{ result }}</label>
+<div>
+  <input
+  id="expression"
+  class='expression'
+  name="expression"
+  type="text"
+  value='{{ expression }}'
+  ng-keydown="inputKeyDown($event)"/>
+  <label id="output" class='output'>{{ result }}</label>
+</div>
