@@ -41,7 +41,7 @@ export class CalculatorComponent implements InputHandler {
   }
 
   @HostListener('document:paste', ['$event'])
-  public paste(event) {
+  public paste(event: ClipboardEvent) {
     const pasted = event.clipboardData.getData('text/plain')
     this.calculator.input(pasted)
   }
