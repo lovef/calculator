@@ -1,10 +1,13 @@
 <div>
   <input
+  (keypress)="keydown($event)"
+  (input)="onChanged($event)"
   id="expression"
   class='expression'
   name="expression"
   type="text"
-  value='{{ expression }}'
-  ng-keydown="inputKeyDown($event)"/>
-  <label id="output" class='output'>{{ result }}</label>
+  value="{{ expression }}"/>
+  <label id="output" class="output">{{ result }}</label>
+
+
 </div>

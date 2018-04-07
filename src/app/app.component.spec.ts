@@ -4,10 +4,12 @@ import { CalculatorComponent } from './calculator/calculator.component'
 import { MatToolbarModule, MatCardModule, MatButtonModule, MatIconModule } from '@angular/material'
 import { CalculatorService } from './calculator/calculator.service'
 import { KeypadComponent } from './calculator/keypad/keypad.component'
+import { FormsModule } from '@angular/forms';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        FormsModule,
         MatToolbarModule,
         MatCardModule,
         MatButtonModule,
