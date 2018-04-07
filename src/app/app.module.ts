@@ -10,6 +10,7 @@ import { ServiceWorkerModule } from '@angular/service-worker'
 import { environment } from '../environments/environment'
 import { CalculatorService } from './calculator/calculator.service'
 import { KeypadComponent } from './calculator/keypad/keypad.component'
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { KeypadComponent } from './calculator/keypad/keypad.component'
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     MatToolbarModule,
     MatCardModule,
     MatButtonModule,

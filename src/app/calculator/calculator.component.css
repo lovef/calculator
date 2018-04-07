@@ -1,12 +1,16 @@
+div {
+  margin: 10px;
+}
 .expression {
   display:block;
   text-align:left;
-  margin: 10px;
+  width: 100%;
   font-size: 20px;
+  border:none;
+  outline: none;
 }
 .output {
   display:block;
   text-align:right;
-  margin: 10px;
   font-size: 20px;
 }

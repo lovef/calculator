@@ -27,8 +27,14 @@ export class CalculatorComponent implements InputHandler {
     this.calculator.backspace()
   }
 
-  @HostListener('document:keydown', ['$event'])
-  handleKeyboardEvent(event: KeyboardEvent) {
+  onChanged(event) {
+    console.log(event)
+  }
+
+  @HostListener('document:keypress', ['$event'])
+  keydown(event: KeyboardEvent) {
+    // console.log(event)
+    return
     switch (event.keyCode) {
       case 8:
         this.calculator.backspace()
@@ -36,13 +42,15 @@ export class CalculatorComponent implements InputHandler {
         break
       default:
         this.calculator.input(event.key)
+        event.preventDefault()
         break
     }
   }
 
-  @HostListener('document:paste', ['$event'])
-  public paste(event) {
-    const pasted = event.clipboardData.getData('text/plain')
-    this.calculator.input(pasted)
-  }
+  // @HostListener('document:paste', ['$event'])
+  // public paste(event) {
+  //   event.preventDefault()
+  //   const pasted = event.clipboardData.getData('text/plain')
+  //   this.calculator.input(pasted)
+  // }
 }

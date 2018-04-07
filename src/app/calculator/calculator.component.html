@@ -1,2 +1,13 @@
-<label id="expression" class='expression'>{{ expression }}</label>
-<label id="output" class='output'>{{ result }}</label>
+<div>
+  <input
+  (keypress)="keydown($event)"
+  (input)="onChanged($event)"
+  id="expression"
+  class='expression'
+  name="expression"
+  type="text"
+  value="{{ expression }}"/>
+  <label id="output" class="output">{{ result }}</label>
+
+
+</div>
